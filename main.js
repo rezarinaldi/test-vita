@@ -4,68 +4,6 @@ const notesContainer = document.getElementById("noteCard");
 const searchInput = document.getElementById("searchInput");
 const form = document.getElementById("form");
 
-// // --- FILTERED ----
-// let dataNotes = [];
-
-// searchInput.addEventListener("keyup", () => {
-//   const searchValue = searchInput.value;
-//   notesContainer.innerHTML = "";
-
-//   const filteredNotes = dataNotes.filter((note) =>
-//     note.title.toLowerCase().includes(searchValue.toLowerCase())
-//   );
-
-//   // GET DATA
-//   filteredNotes.forEach((note) => {
-//     const newNoteElement = document.createElement("div");
-//     const newNoteTitleElement = document.createElement("h3");
-//     const newNoteContentElement = document.createElement("p");
-//     const newNoteDateElement = document.createElement("p");
-//     const newNoteBtn = document.createElement("a");
-
-//     newNoteTitleElement.textContent = note.title;
-//     newNoteContentElement.textContent = note.content;
-//     newNoteDateElement.textContent = note.date;
-//     newNoteBtn.textContent = "See note";
-//     newNoteBtn.href = `note.html?id=${note._id}`;
-
-//     newNoteTitleElement.classList.add("text-xl", "font-bold");
-//     newNoteContentElement.classList.add("text-blue-300");
-//     newNoteDateElement.classList.add("text-red-300");
-//     newNoteBtn.classList.add(
-//       "bg-indigo-500",
-//       "text-white",
-//       "p-2",
-//       "rounded-lg",
-//       "w-[10px]"
-//     );
-//     newNoteElement.classList.add(
-//       "border",
-//       "border-gray-100",
-//       "p-2",
-//       "bg-blue-100",
-//       "shadow-md",
-//       "rounded-md",
-//       "shadow-black/5",
-//       "grid",
-//       "grid-cols-1"
-
-//       // bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5
-//       // "divide-y",
-//       // "divide-gray-400"
-//     );
-
-//     newNoteElement.append(
-//       newNoteTitleElement,
-//       newNoteContentElement,
-//       newNoteDateElement,
-//       newNoteBtn
-//     );
-//     notesContainer.append(newNoteElement);
-//     console.log(notesContainer);
-//   });
-// });
-
 form.addEventListener("submit", async (event) => {
   // avoid default behavior
   event.preventDefault();
@@ -136,7 +74,8 @@ async function buildApp() {
       "ri-edit-2-line",
       "absolute",
       "bottom-3",
-      "right-3"
+      "right-3",
+      "text-indigo-800"
     );
 
     // DELETE
@@ -145,13 +84,19 @@ async function buildApp() {
       "ri-delete-bin-line",
       "absolute",
       "top-3",
-      "right-3"
+      "right-3",
+      "text-indigo-800"
     );
     newNoteDelete.addEventListener("click", async () => {
       await deleteNote(note._id);
     });
 
-    newNoteTitleElement.classList.add("text-xl", "font-bold", "text-red-600");
+    newNoteTitleElement.classList.add(
+      "text-xl",
+      "font-bold",
+      "text-red-600",
+      "mt-5"
+    );
     newNoteContentElement.classList.add("text-slate-800");
     newNoteDateElement.classList.add("text-gray-500", "text-sm", "mt-4");
     newNoteBtn.classList.add(
@@ -161,8 +106,9 @@ async function buildApp() {
       "rounded-lg",
       "w-[100px]",
       "text-center",
-      "mt-2",
-      "shadow-md"
+      "shadow-md",
+      "hover:bg-slate-800",
+      "hover:text-white"
     );
 
     newNoteElement.classList.add(
